@@ -17,16 +17,17 @@ output:
 
 ```{r load_lib, echo=FALSE , warning=FALSE, message=FALSE, results = 'hide'}
 
-# "Sysselsatta i `r studreg`"
-
 library(knitr)
 library(markdown)
-library(DT)
-library(tidyverse)
-library(scales)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(stringi)
+library(stringr)
 library(readxl)
+library(pxweb)
+library(scales)
 
-# studreg <- "Stockholms län"
 
 ```
 
