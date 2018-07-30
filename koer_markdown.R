@@ -64,8 +64,7 @@ fskaparapport <- function(studreg, filepath) {
 }
 
 
-# for (i in 1:nrow(regtab)){
-for (i in 1:2){
+for (i in 1:nrow(regtab)){
   print(paste0(i,"/", nrow(regtab)))
   studreg <- as.character(unlist(regtab[i, "lan"]))
   filepath <- file.path("rapporter", frensa_svenska_tecken(paste0("Sysselsattning_", 
