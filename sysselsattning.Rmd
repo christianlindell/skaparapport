@@ -1,0 +1,84 @@
+---
+title: "Sysselsatta i `r studreg`"
+author: "Region Skåne,  Enheten för Samhällsanalys"
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    css: kommun.css
+    fig_height: 4
+    fig_width: 6.4
+    smart: no
+    toc: yes
+    toc_float: yes
+  word_document:
+    toc: yes
+---
+<img src="picts/logo.svg" height="85" width="85" style="position:absolute;top:5px;right:5px;" />
+
+```{r load_lib, echo=FALSE , warning=FALSE, message=FALSE, results = 'hide'}
+
+# "Sysselsatta i `r studreg`"
+
+library(knitr)
+library(markdown)
+library(DT)
+library(tidyverse)
+library(scales)
+library(readxl)
+
+# studreg <- "Stockholms län"
+
+```
+
+
+```{r funktioner, echo=FALSE , warning=FALSE, message=FALSE, results = 'hide'}
+
+# Funktionen beräknar höjd när antalet staplar varierar i digram med horisontella staplar. Om det till exempel endast finns 
+# sysselsatta inom två näringsgrenar (när normalfallet är 16) vill man inte att hela det vertikala utrymmet ska fyllas
+# med två jättebreda staplar.
+
+ffigHeight <- function(antRader) {
+  hojd <- (2.7 + antRader * 0.6) / 2.54
+  return(hojd)
+}
+
+```
+
+
+# Sysselsättning
+
+Det här är en demonstration av hur man kan gernerera rapporter i R med hjälp av markdown. Av koden framgår också hur man får in en logga och skapar en innehållsförteckning.
+
+
+```{r skapa_dia, echo=FALSE , warning=FALSE, message=FALSE, results = 'hide'}
+source("script/fsys.R", encoding = 'UTF-8')
+lsys_dia <- fsys(studreg, ant_jfr = 3)
+```
+
+## Sysselsättningsutveckling över tid
+
+Så här ser sysselsättningsutvecklingen ut:
+
+```{r dia_sys_ar,   echo=FALSE , warning=FALSE, message=FALSE, fig.height=3.5}
+lsys_dia$plot_sys_ar
+
+```
+
+Nedan visas sysselsättningsutvecklingen i `r studreg` vad avser sysselsättningen över tid och branschfördelad sysselsättning för senast tillgängliga år. Uppgifterna avser dagbefolkning. Data kan uppdateras genom att köra scriptet "uppdatera_sys.R", vilket finns i katalogen "update".
+
+## Sysselsättning per bransch
+
+
+Följande text är autogenererad med hjälp av funktionen ftext_rang_antal som anropas i scriptet fsys.R:`r lsys_dia$txt_bransch`
+
+Så här ser den branschfördelade sysselsättningen ut:
+
+```{r dia_sys_bransch,   echo=FALSE , warning=FALSE, message=FALSE, fig.height=6.5}
+lsys_dia$plot_sys_bransch
+
+```
+
+
+# Avslutning
+
+Det här stycket finns med för att skapa en rubrik till i innehållsförteckningen!
