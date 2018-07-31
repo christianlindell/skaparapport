@@ -2,7 +2,7 @@
 
 rm(list = ls()) # Rensar bort alla objekt som kan störa körningen
 
-# Se till så att working directory är satt till "skapa_rapport v2".
+# Se till så att working directory är satt till "skaparapport".
 
 ## Packages
 library(knitr)
