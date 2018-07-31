@@ -1,6 +1,5 @@
 # SKRIPT FÖR ATT GENERERA RAPPORTER VILKA SPARAS I KATALOGEN "rapporter"
 
-rm(list = ls()) # Rensar bort alla objekt som kan störa körningen
 
 # Se till så att working directory är satt till "skaparapport".
 
