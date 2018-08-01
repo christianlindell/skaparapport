@@ -38,25 +38,25 @@ ftext_rang_antal <- function(df, ant_jfr = 3, inledning1 = "", inledning2 = "", 
 
 
 # TESTKOD
-load("data/dfsys.RData")
-
-lan_urval <- "Skåne län"
-
-
-dfsys_bransch <- dfsys %>%
-  filter(lan %in% lan_urval & ar == max(ar)) %>%
-  select(lan, sni = naringsgren_sni_2007, ar, values) %>%
-  group_by(lan, sni, ar) %>%
-  summarise(values = sum(values, na.rm = TRUE)) %>%
-  ungroup() %>%
-  select(enhet = sni, values) %>%
-  arrange(-values)
-
-(ftext_rang_antal(df = dfsys_bransch,
-                  ant_jfr = 3,
-                  inledning1 = "Störst antal sysselsatta hade",
-                  forts1 =  "följt av ",
-                  enhet1 = "sysselsatta",
-                  enhet2 = "sysselsatta",
-                  ant_decimal = 0))
+# load("data/dfsys.RData")
+# 
+# lan_urval <- "Skåne län"
+# 
+# 
+# dfsys_bransch <- dfsys %>%
+#   filter(lan %in% lan_urval & ar == max(ar)) %>%
+#   select(lan, sni = naringsgren_sni_2007, ar, values) %>%
+#   group_by(lan, sni, ar) %>%
+#   summarise(values = sum(values, na.rm = TRUE)) %>%
+#   ungroup() %>%
+#   select(enhet = sni, values) %>%
+#   arrange(-values)
+# 
+# (ftext_rang_antal(df = dfsys_bransch,
+#                   ant_jfr = 3,
+#                   inledning1 = "Störst antal sysselsatta hade",
+#                   forts1 =  "följt av ",
+#                   enhet1 = "sysselsatta",
+#                   enhet2 = "sysselsatta",
+#                   ant_decimal = 0))
                       
